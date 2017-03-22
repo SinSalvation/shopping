@@ -1,0 +1,109 @@
+.seperator{
+    border-top: 3px solid deepskyblue;
+    height: 60px;
+}
+.addr-select{
+    width: 100px;
+    padding: 3px 8px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.cart-box{
+    min-height: 160px;
+    height: auto;
+    border: 1px solid #E6E6E6;
+}
+.sumprice{
+    border-top: 1px solid #DCDCDC;
+    min-height:50px;
+}
+.footbar{
+    background: url("/shopping/assets/images/footbar.png") 0 center no-repeat;
+    height: 72px;
+    width: 100%;
+}
+.line-img{
+    width: 634px;
+    height: 36px;
+    background: url("/shopping/assets/images/line.png") 0 0 no-repeat;
+    font: bold 14px/36px "Microsoft Yahei";
+    color: #646464;
+    margin: 30px 0 0;
+}
+.line2-img{
+    width: 634px;
+    height: 36px;
+    background: url("/shopping/assets/images/line2.png") 0 0 no-repeat;
+    font: bold 14px/36px "Microsoft Yahei";
+    color: #646464;
+    margin: 30px 0 0;
+}
+.line3-img{
+    width: 634px;
+    height: 36px;
+    background: url("/shopping/assets/images/line3.png") 0 0 no-repeat;
+    font: bold 14px/36px "Microsoft Yahei";
+    color: #646464;
+    margin: 30px 0 0;
+}
+.current_step{
+    color: #fff;
+}
+
+.order-box{
+    width: 80%;
+    height: auto;
+}
+.panel{
+    width: 100%;
+    min-height: 180px;
+    margin-bottom: 20px;
+}
+.addr-box{
+    height: 145px;
+    line-height: 18px;
+    background: url("/shopping/assets/images/address.png") 0 4px no-repeat;
+    position: relative;
+    cursor: pointer;
+}
+.current_addr{
+    background-position: 0 -287px;
+}
+.my_addr{
+    background-position: 0 4px;
+}
+.addr-box p{
+    height: 36px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    word-break: break-all;
+    color: #555;
+    z-index: 2;
+    position: relative;
+}
+.addr-mo{
+    background: url("/shopping/assets/images/default_addr.png") no-repeat;
+    width: 51px;
+    height: 51px;
+    display: block;
+    right: 0px;
+    z-index: 0;
+}
+.additoin-box{
+    display: none;
+}
+.advertise-box{
+    min-height: 260px;
+    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.innerbox{
+    width: 95%;
+    min-height: 180px;
+    margin-bottom: 20px;
+}

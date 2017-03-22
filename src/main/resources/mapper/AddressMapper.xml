@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.tute.shopping.address.dao.AddressMapper" >
+  <resultMap id="BaseResultMap" type="org.tute.shopping.address.pojo.Address" >
+    <id column="addr_id" property="addrId" jdbcType="CHAR" />
+    <result column="client_id" property="clientId" jdbcType="CHAR" />
+    <result column="username" property="username" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="CHAR" />
+    <result column="phone" property="phone" jdbcType="CHAR" />
+    <result column="postcode" property="postcode" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    addr_id, client_id, username, address, phone,postcode
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from address
+    where addr_id = #{addrId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from address
+    where addr_id = #{addrId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="org.tute.shopping.address.pojo.Address" >
+    insert into address (addr_id, client_id, username, address,
+      phone,postcode)
+    values (#{addrId,jdbcType=CHAR}, #{clientId,jdbcType=CHAR}, #{username,jdbcType=CHAR}, #{address,jdbcType=CHAR},
+      #{phone,jdbcType=CHAR},#{postcode,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.tute.shopping.address.pojo.Address" >
+    insert into address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addrId != null" >
+        addr_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="postcode != null" >
+        postcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addrId != null" >
+        #{addrId,jdbcType=CHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=CHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.tute.shopping.address.pojo.Address" >
+    update address
+    <set >
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=CHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="postcode != null" >
+        postcode = #{postcode,jdbcType=CHAR},
+      </if>
+    </set>
+    where addr_id = #{addrId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.tute.shopping.address.pojo.Address" >
+    update address
+    set client_id = #{clientId,jdbcType=CHAR},
+      username = #{username,jdbcType=CHAR},
+      address = #{address,jdbcType=CHAR},
+      phone = #{phone,jdbcType=CHAR},
+      postcode = #{postcode,jdbcType=CHAR}
+    where addr_id = #{addrId,jdbcType=CHAR}
+  </update>
+  <select id="selectByClientId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from address
+    where client_id = #{clientId,jdbcType=CHAR}
+  </select>
+</mapper>

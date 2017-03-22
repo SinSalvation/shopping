@@ -1,0 +1,26 @@
+.sort-menu{
+    border: 1px solid #E6E6E6;
+    border-left: 0px;
+    margin-left: 15px;
+    height: 55px;
+}
+.sort-menu>a>li{
+    display: inline-block;
+    text-align: center;
+    padding: 15px;
+    height: 55px;
+    border-left: 1px solid #E6E6E6;
+    border-right: 1px solid #E6E6E6;
+    cursor: pointer;
+    -webkit-user-select:none;
+}
+.btn-menu{
+    margin:15px;
+}
+.menuhead{
+    margin-left: -40px;
+}
+.menutail{
+    margin-left: -5px;
+}
+

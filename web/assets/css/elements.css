@@ -1,0 +1,32 @@
+body{
+    font-family: "Microsoft Yahei",'Hiragino Sans GB',"Simsun","Arial";
+}
+a{
+    text-decoration: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+a:visited {
+    text-decoration: none;
+}
+a:hover {
+    color: deepskyblue;
+    text-decoration: none;
+}
+ul,ol{
+    list-style: none;
+}
+dl{
+    margin-bottom: 0px
+}
+table thead tr th{
+    text-align: center;
+}
+table tbody tr td{
+    text-align: center;
+}
+table{
+    border-bottom: 2px solid #DDDDDD;
+}

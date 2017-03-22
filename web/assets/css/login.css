@@ -1,0 +1,32 @@
+.main{
+    padding-left: 150px;
+    padding-top: 30px;
+}
+/*登录注册页的模板*/
+.wrap{
+    background: #fff;
+    padding: 15px 25px 15px 15px;
+    width: 850px;
+    color: #6e6e6e;
+    margin: 0px;
+    position: relative;
+    border: 1px solid #eef2f4;
+    box-shadow: 0px 1px 2px #eee;
+}
+.shadow-box{
+    background-color: #ebeeef;
+    width: 950px;
+    margin-bottom: 40px;
+    position: relative;
+}
+.register-box{
+    background: #fff;
+    position: relative;
+    top: -10px;
+    right: -10px;
+    width: 950px;
+    height: auto;
+    font-family: 'Microsoft YaHei';
+    box-shadow: -1px 1px 1px rgb(232,235,236);
+    min-height: 350px;
+}

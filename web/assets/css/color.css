@@ -1,0 +1,61 @@
+.blue1-font{
+    color: dodgerblue;
+}
+.blue2-font {
+    color: deepskyblue;
+}
+.white-font{
+    color: #fff;
+}
+.white-bg{
+    background-color: #fff;
+}
+.blue1-bg{
+    background-color: deepskyblue;
+}
+.blue2-bg{
+    background-color: dodgerblue;
+}
+.grey1-font{
+    color: lightgrey;
+}
+.grey1-bg{
+    background-color: lightgrey;
+}
+.grey2-font{
+    color: #FAFAFA;
+}
+.grey2-bg{
+    background-color: #FAFAFA;
+}
+.grey3-font{
+    color: #8C8C8C;
+}
+.grey3-bg{
+    background-color: #8C8C8C;
+}
+.grey4-bg{
+    background-color: #ebebeb;
+}
+.grey5-bg{
+    background-color: #F5F5F5;
+}
+.grey6-font{
+    color: #656565;
+}
+.grey7-bg{
+    background-color: #F6F9FB;
+}
+.black-font{
+    color: #080808;
+}
+.cart-img{
+    height: 80px;
+    width: 80px;
+}
+.red-bg{
+    color: red;
+}
+.green-bg{
+    color: lime;
+}

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.tute.shopping.book.dao.BookMapper">
+    <resultMap id="BaseResultMap" type="org.tute.shopping.book.pojo.Book">
+        <id column="book_id" property="bookId" jdbcType="CHAR"/>
+        <result column="bookname" property="bookname" jdbcType="CHAR"/>
+        <result column="price" property="price" jdbcType="DOUBLE"/>
+        <result column="remain" property="remain" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="CHAR"/>
+        <result column="page" property="page" jdbcType="INTEGER"/>
+        <result column="author" property="author" jdbcType="CHAR"/>
+        <result column="publishdate" property="publishdate" jdbcType="CHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="org.tute.shopping.book.pojo.BookWithBLOBs" extends="BaseResultMap">
+        <result column="description" property="description" jdbcType="LONGVARCHAR"/>
+        <result column="content" property="content" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      book_id, bookname, price, remain, type, page, author, publishdate
+    </sql>
+    <sql id="Blob_Column_List">
+      description, content
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from book
+        where book_id = #{bookId,jdbcType=CHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from book
+    where book_id = #{bookId,jdbcType=CHAR}
+  </delete>
+    <insert id="insert" parameterType="org.tute.shopping.book.pojo.BookWithBLOBs">
+    insert into book (book_id, bookname, price, 
+      remain, type, page, author, 
+      publishdate, description, content
+      )
+    values (#{bookId,jdbcType=CHAR}, #{bookname,jdbcType=CHAR}, #{price,jdbcType=DOUBLE}, 
+      #{remain,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, #{page,jdbcType=INTEGER}, #{author,jdbcType=CHAR}, 
+      #{publishdate,jdbcType=CHAR}, #{description,jdbcType=LONGVARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="org.tute.shopping.book.pojo.BookWithBLOBs">
+        insert into book
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bookId != null">
+                book_id,
+            </if>
+            <if test="bookname != null">
+                bookname,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="remain != null">
+                remain,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="page != null">
+                page,
+            </if>
+            <if test="author != null">
+                author,
+            </if>
+            <if test="publishdate != null">
+                publishdate,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bookId != null">
+                #{bookId,jdbcType=CHAR},
+            </if>
+            <if test="bookname != null">
+                #{bookname,jdbcType=CHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DOUBLE},
+            </if>
+            <if test="remain != null">
+                #{remain,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=CHAR},
+            </if>
+            <if test="page != null">
+                #{page,jdbcType=INTEGER},
+            </if>
+            <if test="author != null">
+                #{author,jdbcType=CHAR},
+            </if>
+            <if test="publishdate != null">
+                #{publishdate,jdbcType=CHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.tute.shopping.book.pojo.BookWithBLOBs">
+        update book
+        <set>
+            <if test="bookname != null">
+                bookname = #{bookname,jdbcType=CHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DOUBLE},
+            </if>
+            <if test="remain != null">
+                remain = #{remain,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=CHAR},
+            </if>
+            <if test="page != null">
+                page = #{page,jdbcType=INTEGER},
+            </if>
+            <if test="author != null">
+                author = #{author,jdbcType=CHAR},
+            </if>
+            <if test="publishdate != null">
+                publishdate = #{publishdate,jdbcType=CHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where book_id = #{bookId,jdbcType=CHAR}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.tute.shopping.book.pojo.BookWithBLOBs">
+    update book
+    set bookname = #{bookname,jdbcType=CHAR},
+      price = #{price,jdbcType=DOUBLE},
+      remain = #{remain,jdbcType=INTEGER},
+      type = #{type,jdbcType=CHAR},
+      page = #{page,jdbcType=INTEGER},
+      author = #{author,jdbcType=CHAR},
+      publishdate = #{publishdate,jdbcType=CHAR},
+      description = #{description,jdbcType=LONGVARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where book_id = #{bookId,jdbcType=CHAR}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="org.tute.shopping.book.pojo.Book">
+    update book
+    set bookname = #{bookname,jdbcType=CHAR},
+      price = #{price,jdbcType=DOUBLE},
+      remain = #{remain,jdbcType=INTEGER},
+      type = #{type,jdbcType=CHAR},
+      page = #{page,jdbcType=INTEGER},
+      author = #{author,jdbcType=CHAR},
+      publishdate = #{publishdate,jdbcType=CHAR}
+    where book_id = #{bookId,jdbcType=CHAR}
+  </update>
+    <select id="selectByBookName" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from book
+        where lower(bookname) like lower(CONCAT('%',#{bookname,jdbcType=CHAR},'%'))
+    </select>
+    <select id="selectByType" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from book
+        where lower(type) like lower(CONCAT('%',#{type,jdbcType=CHAR},'%'))
+    </select>
+    <select id="selectByAuthor" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from book
+        where lower(author) like lower(CONCAT('%',#{author,jdbcType=CHAR},'%'))
+    </select>
+    <select id="selectByPublishDate" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from book
+        where lower(publishdate) like lower(CONCAT('%',#{publishdate,jdbcType=CHAR},'%'))
+    </select>
+    <select id="selectByClientId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        book.book_id, bookname, book.price, remain, type, page, author, publishdate
+        ,
+        <include refid="Blob_Column_List"/>
+        from book join orders on orders.book_id = book.book_id where orders.client_id = #{clientId,jdbcType=CHAR} limit 0,2
+    </select>
+    <select id="selectByBookId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select top 10
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from book
+        where book_id in (select book_id from orders client_id in (select client_id from orders where book_id =
+        #{bookId,jdbcType=CHAR}))
+    </select>
+
+</mapper>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.tute.shopping.order.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="org.tute.shopping.order.pojo.Order" >
+    <id column="order_id" property="orderId" jdbcType="CHAR" />
+    <result column="client_id" property="clientId" jdbcType="CHAR" />
+    <result column="book_id" property="bookId" jdbcType="CHAR" />
+    <result column="address_id" property="addressId" jdbcType="CHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <association column="book_id" select="selectBook" javaType="org.tute.shopping.book.pojo.Book" property="book">
+      <id column="book_id" property="bookId" jdbcType="CHAR"/>
+      <result column="bookname" property="bookname" jdbcType="CHAR"/>
+      <result column="price" property="price" jdbcType="DOUBLE"/>
+      <result column="remain" property="remain" jdbcType="INTEGER"/>
+      <result column="type" property="type" jdbcType="CHAR"/>
+      <result column="page" property="page" jdbcType="INTEGER"/>
+      <result column="author" property="author" jdbcType="CHAR"/>
+      <result column="publishdate" property="publishdate" jdbcType="CHAR"/>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, client_id, book_id, address_id, number, price, created_at
+  </sql>
+  <select id="selectBook" parameterType="java.lang.String" resultType="org.tute.shopping.book.pojo.Book">
+    select book.book_id as bookId, bookname, price, remain, type, page, author, publishdate
+    from book where book_id = #{book_id,jdbcType=CHAR}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where order_id = #{orderId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from orders
+    where order_id = #{orderId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="org.tute.shopping.order.pojo.Order" >
+    insert into orders (order_id, client_id, book_id,
+      address_id, number, price, 
+      created_at)
+    values (#{orderId,jdbcType=CHAR}, #{clientId,jdbcType=CHAR}, #{bookId,jdbcType=CHAR}, 
+      #{addressId,jdbcType=CHAR}, #{number,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, 
+      #{createdAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.tute.shopping.order.pojo.Order" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="clientId != null" >
+        client_id,
+      </if>
+      <if test="bookId != null" >
+        book_id,
+      </if>
+      <if test="addressId != null" >
+        address_id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=CHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=CHAR},
+      </if>
+      <if test="bookId != null" >
+        #{bookId,jdbcType=CHAR},
+      </if>
+      <if test="addressId != null" >
+        #{addressId,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.tute.shopping.order.pojo.Order" >
+    update orders
+    <set >
+      <if test="clientId != null" >
+        client_id = #{clientId,jdbcType=CHAR},
+      </if>
+      <if test="bookId != null" >
+        book_id = #{bookId,jdbcType=CHAR},
+      </if>
+      <if test="addressId != null" >
+        address_id = #{addressId,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.tute.shopping.order.pojo.Order" >
+    update orders
+    set client_id = #{clientId,jdbcType=CHAR},
+      book_id = #{bookId,jdbcType=CHAR},
+      address_id = #{addressId,jdbcType=CHAR},
+      number = #{number,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      created_at = #{createdAt,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=CHAR}
+  </update>
+  <select id="selectCount" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select count(*) from orders where client_id = #{clientId,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from orders
+  </select>
+  <select id="selectByClientId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from orders
+    where client_id = #{clientId,jdbcType=CHAR}
+  </select>
+</mapper>

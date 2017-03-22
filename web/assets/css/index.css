@@ -1,0 +1,50 @@
+.logo-div{
+    margin-left: 100px;
+}
+.txt-border{
+    border: 2px solid deepskyblue;
+}
+.carousel-div{
+    height: 300px;
+}
+.carousel-indicators li{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid deepskyblue;
+    border-radius: 10px;
+}
+.carousel-indicators .active{
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: deepskyblue;
+}
+.carousel-img{
+    width: 100%;
+}
+
+.side-img{
+    display: block;
+    padding: 0px;
+    width: 245px;
+    border: 1px solid #E6E6E6;
+    border-bottom: 0px;
+}
+.sector-menu{
+    padding: 0px;
+    border: 1px solid #E6E6E6;
+    width: 245px;
+}
+.sector-menu>li{
+    display:inline-block;
+    color: #323232;
+    font: 12px/28px "Microsoft YaHei";
+    padding-left:25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
